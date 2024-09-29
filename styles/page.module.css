@@ -1,0 +1,32 @@
+/* page.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full height */
+  background-color: #f9f9f9; /* Light background */
+  text-align: center; /* Center text */
+}
+
+.title {
+  font-size: 2.5rem; /* Larger font size for title */
+  color: #333; /* Dark color for text */
+  margin-bottom: 20px; /* Space below title */
+}
+
+.link {
+  font-size: 1.2rem; /* Font size for links */
+  color: #0070f3; /* Blue color for links */
+  text-decoration: none; /* No underline */
+  padding: 10px 15px; /* Padding around the links */
+  border: 1px solid #0070f3; /* Border around links */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.link:hover {
+  background-color: #0070f3; /* Change background on hover */
+  color: white; /* Change text color on hover */
+}

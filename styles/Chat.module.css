@@ -1,0 +1,68 @@
+/* styles/Chat.module.css */
+/* styles/Chat.module.css */
+
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height of the viewport */
+  max-width: 400px; /* Width similar to a mobile screen */
+  margin: 0 auto; /* Center horizontally */
+  border: 1px solid #ccc; /* Optional border for the chat area */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  background-color: #fff; /* White background */
+}
+
+.messages {
+  flex: 1; /* Take up all available space */
+  padding: 10px;
+  overflow-y: auto; /* Enable scrolling */
+}
+
+.userMessage {
+  align-self: flex-end; /* Align user messages to the right */
+  background-color: #d1e7dd; /* Light green background */
+  color: #0f5132; /* Dark green text */
+  padding: 10px;
+  border-radius: 8px;
+  margin: 5px 0;
+}
+
+.botMessage {
+  align-self: flex-start; /* Align bot messages to the left */
+  background-color: #f8d7da; /* Light red background */
+  color: #721c24; /* Dark red text */
+  padding: 10px;
+  border-radius: 8px;
+  margin: 5px 0;
+}
+
+.inputContainer {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc; /* Top border for the input area */
+  background-color: #f9f9f9; /* Light background for the input area */
+}
+
+.input {
+  flex: 1; /* Take up all available space */
+  padding: 10px;
+  border: 1px solid #ccc; /* Border around the input */
+  border-radius: 5px; /* Rounded corners */
+  margin-right: 10px; /* Space between input and button */
+}
+
+.sendButton {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 15px; /* Padding */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+@media (max-width: 500px) {
+  .chatContainer {
+    width: 100%; /* Full width on small screens */
+    height: 100vh; /* Full height */
+  }
+}

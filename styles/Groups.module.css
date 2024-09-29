@@ -1,0 +1,59 @@
+/* styles/Groups.module.css */
+/* styles/Groups.module.css */
+
+.groupsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background */
+    min-height: 100vh; /* Full height */
+  }
+  
+  .title {
+    font-size: 2.5rem; /* Larger font size for title */
+    color: #333; /* Dark color for text */
+    margin-bottom: 20px; /* Space below title */
+  }
+  
+  .searchInput {
+    padding: 10px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below input */
+    width: 300px; /* Width of the input */
+    font-size: 1rem; /* Font size for input */
+  }
+  
+  .groupsList {
+    list-style: none; /* No bullet points */
+    padding: 0; /* No padding */
+    width: 100%; /* Full width */
+    max-width: 600px; /* Limit max width */
+  }
+  
+  .groupItem {
+    background: #fff; /* White background for group items */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Padding inside the item */
+    margin-bottom: 15px; /* Space between items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .joinButton {
+    background-color: #0070f3; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for button */
+    font-size: 1rem; /* Font size for button */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  .joinButton:hover {
+    background-color: #005bb5; /* Darker color on hover */
+  }
+  
