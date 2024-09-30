@@ -1,43 +1,46 @@
-// app/chat/[id]/page.js
-// app/chat/[id]/page.js
-"use client"; // Make sure this is the first line
+"use client"; // Ensures the component runs on the client side
+
 import { useState, useEffect } from 'react';
-import styles from '/styles/Chat.module.css'; // Importing the styles
-import { useRouter } from 'next/router';
+import io from 'socket.io-client'; // Import socket.io-client
+import styles from '/styles/Chat.module.css';
+import { useParams } from 'next/navigation'; // Import useParams for dynamic routing
+
+let socket; // Global socket variable
 
 export default function Chat() {
-  const router = useRouter();
+  const { id } = useParams(); // Extract the dynamic id from the URL
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
-  const [groupId, setGroupId] = useState(null);
 
   useEffect(() => {
-    // Wait for the router to be ready
-    if (router.isReady) {
-      const { id } = router.query; // Get the group ID from the URL
-      setGroupId(id);
-    }
-  }, [router.isReady, router.query]);
+    // Initialize socket connection
+    socket = io({ path: '/api/socket' }); // Specify the path for Socket.IO
+
+    // Listen for incoming messages
+    socket.on('receiveMessage', (message) => {
+      setMessages((prevMessages) => [...prevMessages, message]);
+    });
+
+    // Cleanup on component unmount
+    return () => {
+      socket.off('receiveMessage');
+      socket.disconnect();
+    };
+  }, []);
 
   const sendMessage = (e) => {
     e.preventDefault();
     if (input.trim()) {
-      setMessages([...messages, { text: input, sender: 'user' }]);
+      const message = { text: input, sender: 'user', groupId: id };
+      setMessages([...messages, message]);
+      socket.emit('sendMessage', message); // Emit the message to the server
       setInput('');
-      
-      // Simulating receiving a message after a delay
-      setTimeout(() => {
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { text: 'This is a simulated response!', sender: 'bot' },
-        ]);
-      }, 1000);
     }
   };
 
   return (
     <div className={styles.chatContainer}>
-      <h1>Chat Room for Group ID: {groupId || 'Loading...'}</h1>
+      <h1>Chat Room for Group ID: {id || 'Loading...'}</h1>
       <div className={styles.messages}>
         {messages.map((msg, index) => (
           <div key={index} className={msg.sender === 'user' ? styles.userMessage : styles.botMessage}>
